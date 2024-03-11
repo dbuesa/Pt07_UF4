@@ -29,7 +29,7 @@ class AuthenticatedSessionController extends Controller
         $attempts = session('login_attempts', 0);
         session(['login_attempts' => ++$attempts]);
 
-        if ($attempts > 1) {
+        if ($attempts >= 2) {
             $request->validate([
                 'g-recaptcha-response' => 'required|captcha',
             ]);

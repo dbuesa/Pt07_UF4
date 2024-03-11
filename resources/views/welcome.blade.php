@@ -49,8 +49,11 @@
                     <h1 style="font-size: 20px; font-weight: bold">Articles:</h1>
                     <ul style="list-style-type: disc; padding-left: 20px;">
                         @foreach ($articles as $article)
-                            <li>{{ $article->descripcio }}</li>
+                            <li>{{ $article->id }} - {{ $article->descripcio }}</li>
                         @endforeach
+
+                            {{ $articles->links('pagination::bootstrap-4') }}
+
                     </ul>
                 </div>
 
