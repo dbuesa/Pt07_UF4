@@ -4,7 +4,12 @@
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
-
+        {!! NoCaptcha::display() !!}
+        @if(session('login_attempts') > 1)
+            <div class="mt-4">
+                {!! NoCaptcha::renderJs() !!}
+            </div>
+        @endif
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
