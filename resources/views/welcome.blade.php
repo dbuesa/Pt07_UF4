@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
+        <link rel="stylesheet" type="text/css" href="styles.css" />
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -45,18 +46,29 @@
 
 
                 </div>
+                <div style="background: white; padding: 10px">
+                    <form method="GET" action="{{ route('articles.index') }}">
+                        <label for="nombreArticles">Articles per pàgina:</label>
+                        <select style="border: 1px solid black" name="nombreArticles" id="nombreArticles" onchange="this.form.submit()">
+                            <option value="5" {{ $numArt == 5 ? 'selected' : '' }}>5</option>
+                            <option value="10" {{ $numArt == 10 ? 'selected' : '' }}>10</option>
+                            <option value="15" {{ $numArt == 15 ? 'selected' : '' }}>15</option>
+                        </select>
+                    </form>
+                </div>
                 <div style="background: white; padding: 20px">
                     <h1 style="font-size: 20px; font-weight: bold">Articles:</h1>
                     <ul style="list-style-type: disc; padding-left: 20px;">
                         @foreach ($articles as $article)
                             <li>{{ $article->id }} - {{ $article->descripcio }}</li>
                         @endforeach
-
-                            {{ $articles->links('pagination::bootstrap-4') }}
-
                     </ul>
                 </div>
-
+                <section class="paginacio">
+                    <div class="pagination-links">
+                        {{ $articles->links() }}
+                    </div>
+                </section>
             </div>
         </div>
     </body>
