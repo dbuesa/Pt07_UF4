@@ -43,4 +43,25 @@ class ArticleController extends Controller
         $article->delete();
         return redirect()->route('dashboard');
     }
+    public function create(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    {
+        return view('articles.create');
+    }
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
+    {
+        $article = new Article;
+        $article->descripcio = $request->description;
+        $article->user_id = auth()->id();
+        $article->save();
+
+        return redirect()->route('dashboard');
+    }
+
+    public function update(Request $request, Article $article): \Illuminate\Http\RedirectResponse
+    {
+        $article->descripcio = $request->description;
+        $article->save();
+
+        return redirect()->route('dashboard');
+    }
 }

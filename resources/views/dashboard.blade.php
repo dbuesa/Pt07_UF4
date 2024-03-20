@@ -21,7 +21,7 @@
                     <li>
                         {{ $article->id }} - {{ $article->descripcio }}
                         <a href="{{ route('articles.edit', $article) }}" class="button">📝</a>
-                        <form action="{{ route('articles.destroy', $article) }}" method="POST" style="display: inline;">
+                        <form action="{{ route('articles.destroy', $article) }}" method="POST" style="display: inline;" onsubmit="return confirm('Estàs segur que vols eliminar aquest article?');">
                             @csrf
                             @method('DELETE')
                             <button type="submit">❌</button>
@@ -29,13 +29,13 @@
                     </li>
                 @endforeach
             </ul>
-            <button>Afegir article 🆕</button>
+            <a href="{{ route('articles.create') }}" class="button">Afegir article 🆕</a>
             <div class="pagination-links">
                 {{ $articles->links() }}
             </div>
         @else
             <p>No tens cap article encara</p>
-            <button>Afegir article 🆕</button>
+            <a href="{{ route('articles.create') }}" class="button">Afegir article 🆕</a>
         @endif
     </div>
 
