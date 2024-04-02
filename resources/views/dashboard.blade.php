@@ -29,13 +29,13 @@
                     </li>
                 @endforeach
             </ul>
-            <a href="{{ route('articles.create') }}" class="button">Afegir article 🆕</a>
+            <a href="{{ route('articles.create') }}" class="afegir">Afegir article 🆕</a>
             <div class="pagination-links">
                 {{ $articles->links() }}
             </div>
         @else
             <p>No tens cap article encara</p>
-            <a href="{{ route('articles.create') }}" class="button">Afegir article 🆕</a>
+            <a href="{{ route('articles.create') }}" class="afegir">Afegir article 🆕</a>
         @endif
     </div>
 

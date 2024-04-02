@@ -30,7 +30,7 @@
                 <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">Recorde'm</span>
             </label>
         </div>
-        @if(session('login_attempts') >= 2)
+        @if(session('login_attempts') >= 3)
             <div class="mt-4">
                 {!! NoCaptcha::display() !!}
                 {!! NoCaptcha::renderJs() !!}
