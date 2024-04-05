@@ -30,6 +30,11 @@
                 <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">Recorde'm</span>
             </label>
         </div>
+        <div class="flex items-center justify-end mt-4">
+            <a href="{{ url('/login-google') }}" class="btn btn-primary" style="background-color: black; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+                Inicia sessió amb Google
+            </a>
+        </div>
         @if(session('login_attempts') >= 3)
             <div class="mt-4">
                 {!! NoCaptcha::display() !!}
