@@ -72,4 +72,38 @@ Route::get('/google-callback', function () {
     return redirect()->route('dashboard');
 });
 
+Route::get('/login-github', function () {
+    return Socialite::driver('github')->redirect();
+})->name('/login-github');
+
+Route::get('/github-callback', function () {
+    $user = Socialite::driver('github')->user();
+    $userExists = User::where('external_id', $user->id)->where('external_auth', 'github')->first();
+
+    $existingUser = User::where('email', $user->email)->first();
+    if ($existingUser) {
+        if ($userExists) {
+            auth()->login($userExists);
+        } else {
+            $existingUser->external_id = $user->id;
+            $existingUser->external_auth = 'github';
+            $existingUser->save();
+
+            auth()->login($existingUser);
+        }
+    } else if ($userExists) {
+        auth()->login($userExists);
+    } else {
+        $newUser = User::create([
+            'name' => $user->name,
+            'email' => $user->email,
+            'external_id' => $user->id,
+            'external_auth' => 'github',
+        ]);
+        auth()->login($newUser);
+    }
+
+    return redirect()->route('dashboard');
+});
+
 require __DIR__.'/auth.php';
