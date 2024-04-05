@@ -34,9 +34,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
+Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
 Route::middleware('auth')->group(function () {
-    Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
-    Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
     Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
     Route::put('/articles/{article}', [ArticleController::class, 'update'])->name('articles.update');
     Route::get('/articles/{article}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
