@@ -35,6 +35,11 @@
                 Inicia sessió amb Google
             </a>
         </div>
+        <div class="flex items-center justify-end mt-4">
+            <a href="{{ url('/login-github') }}" class="btn btn-primary" style="background-color: black; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+                Inicia sessió amb Github
+            </a>
+        </div>
         @if(session('login_attempts') >= 3)
             <div class="mt-4">
                 {!! NoCaptcha::display() !!}
