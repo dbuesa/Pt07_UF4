@@ -38,12 +38,16 @@
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
+        <!-- Contenidor per al botó d'inici de sessió amb Google -->
         <div class="flex items-center justify-end mt-4">
+            <!-- Enllaç per iniciar sessió amb Google. -->
             <a href="{{ url('/login-google') }}" class="btn btn-primary" style="background-color: black; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
                 Inicia sessió amb Google
             </a>
         </div>
+        <!-- Contenidor per al botó d'inici de sessió amb GitHub -->
         <div class="flex items-center justify-end mt-4">
+            <!-- Enllaç per iniciar sessió amb GitHub. -->
             <a href="{{ url('/login-github') }}" class="btn btn-primary" style="background-color: black; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
                 Inicia sessió amb Github
             </a>

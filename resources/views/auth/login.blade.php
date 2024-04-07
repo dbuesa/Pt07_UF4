@@ -30,19 +30,27 @@
                 <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">Recorde'm</span>
             </label>
         </div>
+        <!-- Contenidor per al botó d'inici de sessió amb Google -->
         <div class="flex items-center justify-end mt-4">
+            <!-- Enllaç per iniciar sessió amb Google. -->
             <a href="{{ url('/login-google') }}" class="btn btn-primary" style="background-color: black; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
                 Inicia sessió amb Google
             </a>
         </div>
+        <!-- Contenidor per al botó d'inici de sessió amb GitHub -->
         <div class="flex items-center justify-end mt-4">
+            <!-- Enllaç per iniciar sessió amb GitHub. -->
             <a href="{{ url('/login-github') }}" class="btn btn-primary" style="background-color: black; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
                 Inicia sessió amb Github
             </a>
         </div>
+
         @if(session('login_attempts') >= 3)
+            <!-- Si l'usuari ha intentat iniciar sessió 3 vegades o més, mostra el Captcha per a la verificació addicional. -->
             <div class="mt-4">
+                <!-- Mostra el Captcha. NoCaptcha::display() genera el widget de captcha en la pàgina. -->
                 {!! NoCaptcha::display() !!}
+                <!-- Inclou els scripts de Javascript necessaris per al funcionament del Captcha. -->
                 {!! NoCaptcha::renderJs() !!}
             </div>
         @endif

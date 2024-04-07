@@ -46,10 +46,14 @@
 
 
                 </div>
+                <!-- Contenidor per al formulari de selecció de la quantitat d'articles per pàgina -->
                 <div style="background: white; padding: 10px">
+                    <!-- Formulari que envia una sol·licitud GET a la ruta 'articles.index' -->
                     <form method="GET" action="{{ route('articles.index') }}">
+                        <!-- Etiqueta i select per escollir la quantitat d'articles a mostrar -->
                         <label for="nombreArticles">Articles per pàgina:</label>
                         <select style="border: 1px solid black" name="nombreArticles" id="nombreArticles" onchange="this.form.submit()">
+                            <!-- Opcions de selecció per a la quantitat d'articles, amb una opció seleccionada basada en la variable $numArt -->
                             <option value="5" {{ $numArt == 5 ? 'selected' : '' }}>5</option>
                             <option value="10" {{ $numArt == 10 ? 'selected' : '' }}>10</option>
                             <option value="15" {{ $numArt == 15 ? 'selected' : '' }}>15</option>
@@ -57,8 +61,11 @@
                     </form>
                 </div>
                 <div style="background: white; padding: 20px">
+                    <!-- Títol de la secció d'articles -->
                     <h1 style="font-size: 20px; font-weight: bold">Articles:</h1>
+                    <!-- Llista desordenada per a la visualització dels articles -->
                     <ul style="list-style-type: disc; padding-left: 20px;">
+                        <!-- Bucle Blade per a cada article, mostrant el seu ID i descripció -->
                         @foreach ($articles as $article)
                             <li>{{ $article->id }} - {{ $article->descripcio }}</li>
                         @endforeach
